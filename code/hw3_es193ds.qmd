@@ -26,6 +26,7 @@ library(ggeffects)
 library(gtsummary)
 library(flextable)
 library(modelsummary)
+library(ggplot2)
 
 drought_exp <- read_xlsx(path = here("data", 
                                      "Valliere_etal_EcoApps_Data.xlsx"),
@@ -116,7 +117,49 @@ model0 <- lm(total_g ~ 1, # formula
 total biomass as a function of SLA, water treatment, and species
 
 ```{r}
+# saturated model
+model1 <- lm(total_g ~ sla + water_treatment + species_name,
+             data = drought_exp_clean)
 
+par(mfrow = c(2, 2))
+plot(model1)
+```
+
+total biomass as a function of SLA and water treatment
+
+```{r}
+model2 <- lm(total_g ~ sla + water_treatment,
+             data = drought_exp_clean)
+
+plot(model2)
+```
+
+total biomass as a function of SLA and species
+
+```{r}
+model3 <- lm(total_g ~ sla + species_name,
+             data = drought_exp_clean)
+
+plot(model3)
+```
+
+total biomass as a function of water treatment and species
+
+```{r}
+model4 <- lm(total_g ~ water_treatment + species_name,
+             data = drought_exp_clean)
+
+plot(model4)
+```
+
+model selection
+
+```{r}
+model.sel(model0,
+          model1, 
+          model2, 
+          model3,
+          model4)
 ```
 
 Problem 1
