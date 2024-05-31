@@ -166,10 +166,14 @@ Problem 1
 
 1a.
 
-| Model Number | Predictors |
-|--------------|------------|
-| null         |            |
-| saturated    |            |
-| 3            |            |
-| 4            |            |
-| 5            |            |
+```{r}
+modelsummary::modelsummary( # this function takes a list of models
+  list( 
+    "null" = model0, # "model name" = model object
+    "model 1" = model1,
+    "model 2" = model2,
+    "model 3" = model3,
+    "model 4" = model4
+  )
+) 
+```
