@@ -27,6 +27,7 @@ library(gtsummary)
 library(flextable)
 library(modelsummary)
 library(ggplot2)
+library(kableExtra)
 
 drought_exp <- read_xlsx(path = here("data", 
                                      "Valliere_etal_EcoApps_Data.xlsx"),
@@ -166,14 +167,12 @@ Problem 1
 
 1a.
 
-```{r}
-modelsummary::modelsummary( # this function takes a list of models
-  list( 
-    "null" = model0, # "model name" = model object
-    "model 1" = model1,
-    "model 2" = model2,
-    "model 3" = model3,
-    "model 4" = model4
-  )
-) 
-```
+Total biomass and its predictors
+
+| Model    | Predictors                                            |
+|----------|-------------------------------------------------------|
+| 0 (null) | n/a                                                   |
+| 1        | SLA(specific leaf area), water treatment, and species |
+| 2        | SLA and water treatment                               |
+| 3        | SLA and species                                       |
+| 4        | water treatment and species                           |
