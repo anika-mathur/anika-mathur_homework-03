@@ -26,6 +26,97 @@ library(ggeffects)
 library(gtsummary)
 library(flextable)
 library(modelsummary)
+
+drought_exp <- read_xlsx(path = here("data", 
+                                     "Valliere_etal_EcoApps_Data.xlsx"),
+                         sheet = "First Harvest")
+
+# quick look at data 
+str(drought_exp)
+class(drought_exp)
+```
+
+cleaning
+
+```{r}
+# cleaning
+drought_exp_clean <- drought_exp %>% 
+  clean_names() %>% # nicer column names
+  mutate(species_name = case_when( # adding column with species scientific names
+    species == "ENCCAL" ~ "Encelia californica", # bush sunflower
+    species == "ESCCAL" ~ "Eschscholzia californica", # California poppy
+    species == "PENCEN" ~ "Penstemon centranthifolius", # Scarlet bugler
+    species == "GRICAM" ~ "Grindelia camporum", # great valley gumweed
+    species == "SALLEU" ~ "Salvia leucophylla", # Purple sage
+    species == "STIPUL" ~ "Nasella pulchra", # Purple needlegrass
+    species == "LOTSCO" ~ "Acmispon glaber" # deerweed
+  )) %>% 
+  relocate(species_name, .after = species) %>% # moving species_name column after species
+  mutate(water_treatment = case_when( # adding column with full treatment names
+    water == "WW" ~ "Well watered",
+    water == "DS" ~ "Drought stressed"
+  )) %>% 
+  relocate(water_treatment, .after = water) # moving water_treatment column after water
+```
+
+visualizing
+
+correlations
+
+```{r}
+ggpairs(drought_exp_clean, # data frame
+        columns = c("leaf_dry_weight_g", # columns to visualize
+                    "sla", 
+                    "shoot_g", 
+                    "root_g", 
+                    "total_g"), 
+        upper = list(method = "pearson")) + # calculating Pearson correlation coefficient
+  theme_bw() + # cleaner theme
+  theme(panel.grid = element_blank()) # getting rid of gridlines
+```
+
+biomass between species
+
+```{r}
+ggplot(data = drought_exp_clean, # data frame
+       aes(x = reorder(species_name, # reordering x-axis
+                       -total_g, # in reverse order of mean total mass
+                       fun = mean), # calculating mean to reorder
+           y = total_g)) + # y-axis
+  geom_jitter(width = 0.1, # narrow jitter
+              height = 0) # not jittering points up and down
+```
+
+total biomass difference between water treatments
+
+```{r}
+ggplot(data = drought_exp_clean, # data frame
+       aes(x = water_treatment, # x-axis
+           y = total_g)) + # y-axis
+  geom_jitter(width = 0.1, # narrow jitter
+              height = 0) # not jittering points up and down
+```
+
+SLA influence on biomass
+
+```{r}
+ggplot(data = drought_exp_clean, # data frame
+       aes(x = sla, # x-axis
+           y = total_g)) + # y-axis
+  geom_point() # scatterplot
+```
+
+null model
+
+```{r}
+model0 <- lm(total_g ~ 1, # formula
+             data = drought_exp_clean) # data frame
+```
+
+total biomass as a function of SLA, water treatment, and species
+
+```{r}
+
 ```
 
 Problem 1
