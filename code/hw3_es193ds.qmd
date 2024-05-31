@@ -1,0 +1,41 @@
+Homework 3
+
+name : \[Anika Mathur\]
+
+repository : \[[anika-mathur_homework-03](https://github.com/anika-mathur/anika-mathur_homework-03)\]
+
+setup
+
+```{r}
+# general use
+library(tidyverse)
+library(readxl)
+library(here)
+library(janitor)
+
+# visualizing pairs
+library(GGally)
+
+# model selection
+library(MuMIn)
+
+# model predictions
+library(ggeffects)
+
+# model tables
+library(gtsummary)
+library(flextable)
+library(modelsummary)
+```
+
+Problem 1
+
+1a.
+
+| Model Number | Predictors |
+|--------------|------------|
+| null         |            |
+| saturated    |            |
+| 3            |            |
+| 4            |            |
+| 5            |            |
