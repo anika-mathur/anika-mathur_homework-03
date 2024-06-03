@@ -2,6 +2,8 @@ Homework 3
 
 name : \[Anika Mathur\]
 
+June 2
+
 repository : \[[anika-mathur_homework-03](https://github.com/anika-mathur/anika-mathur_homework-03)\]
 
 setup
