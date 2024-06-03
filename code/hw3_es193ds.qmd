@@ -233,11 +233,21 @@ summary(model4)
 
 Based on the model selection table, model 4 has the lowest AICc value(-156.2), so it has a good balance between being descriptive and complex. Alive with having a delta of 0.00, this model has the best fit in comparison to the others; it best describes the relationship between the predictors and biomass. Between water treatments, the well-watered treatments have a higher avg. biomass than drought-stressed treatments, for all of the species. By making a visual comparison, a species like Penstemon centranthifolius(coeff. 0.05003) has a lower average biomass than other species for both treatments, while a species like Grindelia camporum(coefficient 0.31335)  has a higher average biomass for both treatments(compared to the other species). 
 
-According to the output from this analysis, the coefficient for the well-waterred treatment in 0.11695, and has a standard error of 0.01733; it also has a t-value of 6.746. This indicates that plants in well-watered conditions have about 0.11695 grams of biomass higher than the plants in drought-stressed treatments. The p-value (p \< 0.001) means that there’s a statistically significant difference.
+According to the output from this analysis, the coefficient for the well-watered treatment in 0.11695, and has a standard error of 0.01733; it also has a t-value of 6.746. This indicates that plants in well-watered conditions have about 0.11695 grams of biomass higher than the plants in drought-stressed treatments. The p-value (p \< 0.001) means that there’s a statistically significant difference.
 
 Problem 2
 
 2a.
+
+My data was taken to measure my sleep every night, along with its quality, stress levels, and dreams. An affective visualiization for my personal data could look like an abstract work with different colors signifying the absence or presence of any of these variables, with different sizes or lengths of shapes to signify the number of hours slept per night. The colors are meant to draw emotion, while the patterns can be intriguing while still relaying a message.
+
+2b.
+
+2c.
+
+2d.
+
+My data is on nightly sleep from April 19th to June 1st: it includes the date that the entry was taken, the hours of sleep I got each night, how my quality of sleep was (poor, good, great), if I was stressed (yes, no), and if I dreamt (yes, no). I took inspiration from Lorraine Woodruff’s warming strips quilt and used my quality of sleep in different colors, orange for poor sleep, yellow for good sleep, and green for great sleep. I was intrigued by the idea of using colors to create a sort of mural, and I wanted to use that and add some texture to my own artwork. I decided on digital art, creating both the sketch and final artwork on an iPad. The lengths of each entry signify the hours I slept each night, and each rectangle’s pattern signifies the absence or presence of stress and dreams. No pattern meant I did not have any stress or dreams, lines indicated only stress, a cross-hatched diamond pattern indicated only dreams, and a swirled pattern indicated that both stress and dreams were present. I created this by measuring out the lengths of each entry based on my hours of sleep, and then color-coding them. To finish, I added textures to signify stress and dreams, and cleaned up the piece.
 
 Problem 3.
 
