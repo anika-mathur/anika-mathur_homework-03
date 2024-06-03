@@ -181,6 +181,8 @@ Total biomass and its predictors
 
 1b.
 
+To examine the effects of SLA(specific leaf area), water treatment, and species on total biomass, I created models to understand the relationship between these predictors. There were already null and saturated models, as well as models with SLA + water treatment, and SLA + species. I chose water treatment and species as the predictors to create another model. To choose this model, I looked at the relationship between the predictors in previous models, and decided to use the two predictors whose individual relationship hadn’t been tested yet (water treatment and species). To evaluate linear model assumptions, I looked at the residuals vs. fitted plot and the residuals vs normal Q-Q plot. The fitted plot shows the points scattered around the horizontal line, and the qq plot has points distributed close to its diagonal line, indicating the residuals’ normality.
+
 1c.
 
 ```{r}
@@ -221,11 +223,17 @@ print(p)
 
 1d.
 
+Model predictions and confidence intervals for the biomass (g) of different plant species under two treatments. The drought-stressed treatment is shown in red and the well-watered treatment is blue, and shading around solid lines depicts 95% confidence intervals. The plots are separated by plant species name to compare their differences in biomass. Data source \[<https://doi.org/10.5061/dryad.v0861f7>\]
+
 1e.
 
 ```{r}
 summary(model4)
 ```
+
+Based on the model selection table, model 4 has the lowest AICc value(-156.2), so it has a good balance between being descriptive and complex. Alive with having a delta of 0.00, this model has the best fit in comparison to the others; it best describes the relationship between the predictors and biomass. Between water treatments, the well-watered treatments have a higher avg. biomass than drought-stressed treatments, for all of the species. By making a visual comparison, a species like Penstemon centranthifolius(coeff. 0.05003) has a lower average biomass than other species for both treatments, while a species like Grindelia camporum(coefficient 0.31335)  has a higher average biomass for both treatments(compared to the other species). 
+
+According to the output from this analysis, the coefficient for the well-waterred treatment in 0.11695, and has a standard error of 0.01733; it also has a t-value of 6.746. This indicates that plants in well-watered conditions have about 0.11695 grams of biomass higher than the plants in drought-stressed treatments. The p-value (p \< 0.001) means that there’s a statistically significant difference.
 
 Problem 2
 
@@ -233,14 +241,24 @@ Problem 2
 
 Problem 3.
 
-3a. The authors used Analysis of Variance (ANOVA) tests to address their main research question. Their question regards the trophic diversity of prey and biogeographical feeding patterns of the European wildcat. One of the ANOVA tests (figure 6) was used to determine the consumption of small rodents, in the presence or absence of rabbits in Mediterranean and non-Mediterranean areas.
+3a.
+
+The authors used Analysis of Variance (ANOVA) tests to address their main research question. Their question regards the trophic diversity of prey and biogeographical feeding patterns of the European wildcat. One of the ANOVA tests (figure 6) was used to determine the consumption of small rodents, in the presence or absence of rabbits in Mediterranean and non-Mediterranean areas.
+
+#comment : in homework 2, I submitted table 4, but got a comment that a visualization would be better for a statistical critique, so I am adding figure 6 beneath it; figure 6 visualizes the data from table 4.
 
 ![](images/Screenshot 2024-06-02 at 5.30.26 PM-01.png)
 
-3b. Figure 6 of this paper visually displays their statistics in a clear and logical way. The x-axis represents two categories: the presence or absence of rabbits. The y-axis represents “small rodents consumption” in RF, or relative frequency. This shows how much of the wildcats’ diet consists of small rodents, addressing the part of the research question on the trophic diversity of their prey. It shows summary statistics in the form of means for RF, and error bars to demonstrate the data’s reliability and variability. This figure does not show underlying data or have model predictions.
+3b.
+
+Figure 6 of this paper visually displays their statistics in a clear and logical way. The x-axis represents two categories: the presence or absence of rabbits. The y-axis represents “small rodents consumption” in RF, or relative frequency. This shows how much of the wildcats’ diet consists of small rodents, addressing the part of the research question on the trophic diversity of their prey. It shows summary statistics in the form of means for RF, and error bars to demonstrate the data’s reliability and variability. This figure does not show underlying data or have model predictions.
 
 In the paper’s other figures, the x-and-y-axes are in logical positions and the figures show summary statistics. For example, figures 4a and 4b of this paper have P-values, r\^2 values, and F-statistics, some included in the figures and the rest in their captions. Figures 2a/b and 4a/b from the paper also have regression lines, which are model predictions. Most of the figures have model predictors and summary statistics, and some show underlying data.
 
-3c. The figures have a logical structure and are clear/easy to follow and understand. However, they don’t use any different colors, instead they use different line textures. Colors are easier to differentiate for most people, as even differences in these lines are hard to see unless closely inspected. However, the figures with regression lines and summary statistics are well-placed so they’re clear and easy to read. The legends are also placed well, and there isn’t any distracting/ unnecessary information on the figures. There’s a high data-to-ink ratio, which means the ink is representative of only the essential data; there isn’t anything distracting/unnecessary on the figures. All of the figures have low visual clutter and a good data:ink ratio, making them all clear and concise.
+3c.
 
-3d. To improve figure 6, adding underlying data/ individual data points, especially to better visualize the mean and standard error bars, would be helpful. Adding a different transparency to the underlying data would also keep the focus on the figure’s main components, while still supplying viewers with extra information. This will make any outliers visible, and give a better picture of the data spread. The data for non-Mediterranean and Mediterranean climates is the same color with solid and dotted lines; instead of a texture difference, a color difference would be helpful, especially as the dotted line is thin and looks solid from afar.
+The figures have a logical structure and are clear/easy to follow and understand. However, they don’t use any different colors, instead they use different line textures. Colors are easier to differentiate for most people, as even differences in these lines are hard to see unless closely inspected. However, the figures with regression lines and summary statistics are well-placed so they’re clear and easy to read. The legends are also placed well, and there isn’t any distracting/ unnecessary information on the figures. There’s a high data-to-ink ratio, which means the ink is representative of only the essential data; there isn’t anything distracting/unnecessary on the figures. All of the figures have low visual clutter and a good data:ink ratio, making them all clear and concise.
+
+3d.
+
+To improve figure 6, adding underlying data/ individual data points, especially to better visualize the mean and standard error bars, would be helpful. Adding a different transparency to the underlying data would also keep the focus on the figure’s main components, while still supplying viewers with extra information. This will make any outliers visible, and give a better picture of the data spread. The data for non-Mediterranean and Mediterranean climates is the same color with solid and dotted lines; instead of a texture difference, a color difference would be helpful, especially as the dotted line is thin and looks solid from afar.
