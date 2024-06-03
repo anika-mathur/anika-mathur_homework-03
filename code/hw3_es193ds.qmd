@@ -28,6 +28,8 @@ library(flextable)
 library(modelsummary)
 library(ggplot2)
 library(kableExtra)
+library(broom)
+library(dplyr)
 
 drought_exp <- read_xlsx(path = here("data", 
                                      "Valliere_etal_EcoApps_Data.xlsx"),
@@ -176,3 +178,43 @@ Total biomass and its predictors
 | 2        | SLA and water treatment                               |
 | 3        | SLA and species                                       |
 | 4        | water treatment and species                           |
+
+1b.
+
+1c.
+
+```{r}
+# model predictions and the confidence intervals
+predictions <- predict(model4, newdata = drought_exp_clean, interval = "confidence")
+
+drought_exp_clean$predicted <- predictions[,1]
+drought_exp_clean$conf.low <- predictions[,2]
+drought_exp_clean$conf.high <- predictions[,3]
+
+# make a plot
+p <- ggplot(data = drought_exp_clean, aes(x = species_name, y = total_g, color = water_treatment)) +
+  
+  geom_point(position = position_jitter(height = 0.1), alpha = 0.5, size = 2) + 
+  
+  # confidence intervals and prediction lines
+  geom_line(aes(y = predicted), size = 1) +  # Prediction line
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high, fill = water_treatment), alpha = 0.3) +  
+  
+  # theme
+  theme_classic() +
+  
+ 
+  facet_wrap(~ species_name, scales = "free_x") +
+  
+  # water treatment 
+  scale_color_manual(values = c("Well watered" = "#1f78b4", "Drought stressed" = "#e31a1c")) +
+  scale_fill_manual(values = c("Well watered" = "#1f78b4", "Drought stressed" = "#e31a1c")) +
+  
+  # add axis titles
+  labs(x = "Species Name",
+       y = "Total Biomass (g)",
+       title = "Model Predictions and Underlying Data",
+       subtitle = "Colored by Water Treatment")
+
+print(p)
+```
